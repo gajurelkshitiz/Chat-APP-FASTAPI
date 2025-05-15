@@ -98,3 +98,9 @@ def chat_completion(request: ChatRequest, db: Session = Depends(get_db)):
 def chat_history_page(request: Request, db: Session = Depends(get_db)):
     chats = db.query(ChatHistory).order_by(ChatHistory.created_at.desc()).all()
     return templates.TemplateResponse("chat_history.html", {"request": request, "chats": chats})
+
+
+@app.get('/add/{a}/{b}')
+def add(a:int , b:int):
+    result = a + b
+    return {"result": result}
