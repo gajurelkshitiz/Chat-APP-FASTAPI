@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background: #4CAF50;
+            padding: 15px 0;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 80vh;
+        }
+        .box {
+            background: white;
+            border-radius: 10px;
+            padding: 40px 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.08);
+            text-align: center;
+            width: 100%;
+            max-width: 900px;
+        }
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .prompt {
+            color: #222;
+            font-weight: 500;
+        }
+        .response {
+            color: #444;
+        }
+        .timestamp {
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/health">Health Check</a>
+        <a href="/chat">Chat</a>
+        <a href="/chat-history">Chat History</a>
+    </div>
+    <div class="container">
+        <div class="box">
+            <h1>Chat History</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Prompt</th>
+                        <th>Response</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for chat in chats %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td class="prompt">{{ chat.prompt }}</td>
+                        <td class="response">{{ chat.response }}</td>
+                        <td class="timestamp">{{ chat.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4">No chat history found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% for chat in chats %}
+                {{ chat.prompt }} - {{ chat.response }} - {{ chat.created_at }}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health Check</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background: #4CAF50;
+            padding: 15px 0;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+        .box {
+            background: white;
+            border-radius: 10px;
+            padding: 40px 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background: #388E3C;
+        }
+        #status {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/health">Health Check</a>
+        <a href="/chat">Chat</a>
+        <a href="/chat-history">Chat History</a>
+    </div>
+    <div class="container">
+        <div class="box">
+            <h1>Health Check</h1>
+            <button onclick="checkHealth()">Get your health status</button>
+            <p id="status"></p>
+        </div>
+    </div>
+    <script>
+        function checkHealth() {
+            fetch('/health-check')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('status').innerText = data.status === "OK" ? "Healthy" : "Unhealthy";
+                })
+                .catch(() => {
+                    document.getElementById('status').innerText = "Error checking health";
+                });
+        }
+    </script>
+</body>
+</html>

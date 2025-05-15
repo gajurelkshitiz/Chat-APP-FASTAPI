@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FastAPI Chat App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background: #4CAF50;
+            padding: 15px 0;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+        .box {
+            background: white;
+            border-radius: 10px;
+            padding: 40px 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.08);
+            text-align: center;
+            max-width: 400px;
+        }
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 18px;
+        }
+        ul {
+            text-align: left;
+            margin: 0 auto 20px auto;
+            padding: 0 0 0 20px;
+            max-width: 340px;
+        }
+        li {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/health">Health Check</a>
+        <a href="/chat">Chat</a>
+        <a href="/chat_history">Chat History</a>
+    </div>
+    <div class="container">
+        <div class="box">
+            <h1>🚀 FastAPI Chat App</h1>
+            <p>Welcome! This app provides:</p>
+            <ul>
+                <li><b>Health Check</b>: Check if the service is running smoothly.</li>
+                <li><b>Chat Completion</b>: Ask questions and get answers from LLaMA-3.</li>
+                <li><b>Chat History</b>: View the previous converstations with the model.</li>
+            </ul>
+            <p>Use the navigation bar above to get started.</p>
+        </div>
+    </div>
+</body>
+</html>
